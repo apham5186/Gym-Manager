@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo.SampleController">
+<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GymManagerController">
    <top>
       <TabPane prefHeight="278.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -70,10 +70,10 @@
                                     <Insets right="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <DatePicker prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="firstName1" GridPane.columnIndex="1" />
+                              <TextField fx:id="lastName1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="location1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <DatePicker fx:id="DOB1" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
                                     <ChoiceBox prefHeight="26.0" prefWidth="235.0">
@@ -87,12 +87,12 @@
                                  <children>
                                     <ButtonBar prefHeight="69.0" prefWidth="270.0">
                                       <buttons>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Add Member">
+                                          <Button fx:id="add" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Add Member">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                           </Button>
-                                        <Button mnemonicParsing="false" text="Remove Member">
+                                        <Button fx:id="remove" mnemonicParsing="false" text="Remove Member">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -158,16 +158,16 @@
                                     <Insets right="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField prefHeight="26.0" prefWidth="174.0" GridPane.columnIndex="1" />
-                              <TextField prefHeight="26.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField prefHeight="26.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="className" prefHeight="26.0" prefWidth="174.0" GridPane.columnIndex="1" />
+                              <TextField fx:id="instructor" prefHeight="26.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="location2" prefHeight="26.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="firstName2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="lastName2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <DatePicker fx:id="DOB2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                               <ButtonBar prefHeight="37.0" prefWidth="243.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                 <buttons>
-                                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Check Into Class" />
-                                    <Button mnemonicParsing="false" text="Drop Class" />
+                                  <Button fx:id="checkIn" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Check Into Class" />
+                                    <Button fx:id="drop" mnemonicParsing="false" text="Drop Class" />
                                 </buttons>
                               </ButtonBar>
                            </children>
@@ -183,23 +183,23 @@
                           <menus>
                             <Menu mnemonicParsing="false" text="Member Database">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Print" />
-                                    <MenuItem mnemonicParsing="false" text="Print by County" />
-                                    <MenuItem mnemonicParsing="false" text="Print by Last/First Name" />
-                                    <MenuItem mnemonicParsing="false" text="Print by Expire Date" />
-                                    <MenuItem mnemonicParsing="false" text="Load Members" />
+                                <MenuItem fx:id="print" mnemonicParsing="false" text="Print" />
+                                    <MenuItem fx:id="printByCounty" mnemonicParsing="false" text="Print by County" />
+                                    <MenuItem fx:id="printByName" mnemonicParsing="false" text="Print by Last/First Name" />
+                                    <MenuItem fx:id="printByExpire" mnemonicParsing="false" text="Print by Expire Date" />
+                                    <MenuItem fx:id="loadMembers" mnemonicParsing="false" onAction="#loadMembers" text="Load Members" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="Class Schedule">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Show all Classes" />
-                                    <MenuItem mnemonicParsing="false" text="Load Classes" />
+                                <MenuItem fx:id="printClasses" mnemonicParsing="false" text="Show all Classes" />
+                                    <MenuItem fx:id="loadClasses" mnemonicParsing="false" onAction="#loadSchedule" text="Load Classes" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="Membership Fee">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="First Bill" />
-                                    <MenuItem mnemonicParsing="false" text="Next Bill" />
+                                <MenuItem fx:id="firstBill" mnemonicParsing="false" text="First Bill" />
+                                    <MenuItem fx:id="nextBill" mnemonicParsing="false" text="Next Bill" />
                               </items>
                             </Menu>
                           </menus>
@@ -212,6 +212,6 @@
       </TabPane>
    </top>
    <bottom>
-      <TextArea prefHeight="136.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="messageArea" prefHeight="187.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
